@@ -39,12 +39,12 @@ $ pip install -U pandas
 
 A aplicação conta com o módulo `corrida_gympass`, que provê a classe `AvaliaCorrida`. Esta classe possui os seguintes métodos:
 
-  - `AvaliaCorrida(nome_arq)`: inicia o avaliador de corridas com os dados do arquivo `nome_arq`. 
-  - `carrega_dados(nome_arq)`: carrega o avaliador com um novo arquivo de dados.
-  - `resultado_corrida()`: retorna o resultado da corrida (prova) como um DataFrame pandas.
-  - `melhor_volta(no_piloto)`: retorna a volta mais rápida da prova (se chamado sem argumentos) ou a melhor volta do piloto de código `no_piloto`.
-  - `velocidade_media()`: retorna a velocidade média de cada piloto.
-  - `diferencas_pilotos()`: retorna as diferenças de tempo de chegada entre o vencedor e os demais pilotos. Os tempos são dados como strings no formato “MMminSSsddd”. *Obs.*: o vencedor é retornado na primeira posição da lista com valor 0 (`0min0s0`).
+  - `AvaliaCorrida(nome_arq)`: inicia o avaliador de corridas com os dados do arquivo `nome_arq`
+  - `carrega_dados(nome_arq)`: carrega o avaliador com um novo arquivo de dados
+  - `resultado_corrida()`: retorna o resultado da corrida (prova) como um DataFrame Pandas
+  - `melhor_volta(no_piloto)`: retorna a volta mais rápida da prova (se chamado sem argumentos) ou a melhor volta do piloto de código `no_piloto`
+  - `velocidade_media()`: retorna a velocidade média de cada piloto
+  - `diferencas_pilotos()`: retorna as diferenças de tempo de chegada entre o vencedor e os demais pilotos. Os tempos são dados como strings no formato “MMminSSsddd”. *Obs.*: o vencedor é retornado na primeira posição da lista com valor 0 (`0min0s0`)
 
 Para exemplos de utilização, consulte código do módulo de teste `testa_corrida_gympass.py`.
 
@@ -55,7 +55,7 @@ Detalhes da implementação
 ### Arquivos para a aplicação:
 
   - `corrida_gympass.py`: principal módulo, contém a classe `AvaliaCorrida`
-    – `__init__.py`: arquivo vazio, complementar ao módulo `corrida_gympass`
+  - `__init__.py`: arquivo vazio, complementar ao módulo `corrida_gympass`
   - `testa_corrida_gympass.py`: código para testes e demonstração de uso da aplicação
   - `corredores.data`: arquivo gerado pela cópia e colagem dos dados do site de especificações do teste
   - `corrida_gympass.hlp`: arquivo de ajuda para o módulo `corrida_gympass`, gerado por PyDoc a partir dos docstrings do módulo
@@ -85,7 +85,7 @@ Para a manipulação de dados em forma tabular, optou-se pela utilização da bi
 
 Outra motivação para a escolha do Pandas como biblioteca central da aplicação é sua eficiência. Por ser baseada em no pacote *Numpy*, suas operações internas são escritas em C, permitindo uma velocidade de execução muito maior do que se fossem realizadas em Python padrão.
 
-Para mais detalhes, visite https://pandas.pydata.org/.
+Para mais detalhes, consulte https://pandas.pydata.org/.
 
 
 Testes
