@@ -1,0 +1,4 @@
+non-ver/*
+*.pyc
+__pycache__/*
+

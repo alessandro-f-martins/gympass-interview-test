@@ -1,0 +1,113 @@
+Help on module corrida_gympass:
+
+NAME
+    corrida_gympass - Módulo corrida_gympass:
+
+DESCRIPTION
+    Este módulo implementa um avaliador simples de resultados para corridas de
+    Kart, de acordo com o solicitado para o teste prático do processo seletivo
+    para a posição de Tech Lead Engineer na Gympass.
+
+CLASSES
+    builtins.object
+        AvaliaCorrida
+
+    class AvaliaCorrida(builtins.object)
+     |  AvaliaCorrida(nome_arq)
+     |
+     |  Avalia o resultado de provas de Kart.
+     |
+     |  AvaliaCorrida(nome_arq)
+     |
+     |  Args:
+     |      nome_arq (str): inicia o avaliador de corridas com os dados do
+     |      arquivo `nome_arq`. Este arquivo deve ser um TSV (tab-separated values)
+     |      no seguinte formato:
+     |
+     |      Linhas de cabeçalho:
+     |          - Hora: momento da tomada de volta, no formato HH:MM:SS.mmmm
+     |          - Piloto: referência ao piloto, no formato
+     |              `<cod_piloto> – <nome_piloto>`
+     |              NOTA: o caracter `–` é um EN-dash; não confundir com um hífen
+     |              comum (`-`)
+     |          - Nº Volta: número da volta
+     |          - Tempo Volta: tomada de tempo da volta, no formato MM:SS.mmmm
+     |          - Velocidade média da volta: no formato dd.dddd ou dd,dddd
+     |
+     |      O avaliador aceita arquivos com separadores de campos alternando entre
+     |      tabs e espaços (para as linhas de dados) e tabs _ou_ um ou mais espaços
+     |      (para o cabeçalho).
+     |
+     |      Exemplo:
+     |
+     |      Hora   Piloto  Nº Volta  Tempo Volta  Velocidade média da volta
+     |      23:49:08.277 038 – F.MASSA 1  1:02.852  44,275
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, nome_arq)
+     |      Vide descrição da classe.
+     |
+     |  carrega_dados(self, nome_arq)
+     |      Carrega o avaliador com um novo arquivo de dados.
+     |
+     |      Args:
+     |          nome_arq (str): Nome do arquivo de dados
+     |
+     |  diferencas_pilotos(self)
+     |      Retorna as diferenças de tempo de chegada entre o vencedor e os
+     |      demais pilotos. Os tempos são dados como strings no formato
+     |      "MMminSSsddd".
+     |
+     |      Obs.: o vencedor é retornado na primeira posição da lista com valor 0
+     |      (`0min0s0`).
+     |
+     |      Returns:
+     |          Dicionário com os seguintes dados:
+     |          {<cod_piloto_vencedor>: <tempo_piloto_vencedor>,...
+     |           <cod_piloto_2>: <velocidade_piloto_2>}
+     |           <cod_piloto_n>: <velocidade_piloto_n>}
+     |
+     |  melhor_volta(self, no_piloto=None)
+     |      Retorna a volta mais rápida da prova ou a melhor volta de um piloto.
+     |
+     |      Args:
+     |          no_piloto: código do piloto, ou None para a melhor volta da prova
+     |          (default: None).
+     |
+     |      Returns:
+     |          Tupla com os seguintes dados:
+     |          (<cod_piloto>, <nome_piloto>, <numero_volta>, <tempo_volta>)
+     |
+     |  resultado_corrida(self)
+     |      Retorna o resultado da corrida (prova) como um DataFrame pandas.
+     |
+     |      Returns:
+     |          Resultado da prova como um DataFrame pandas, com os seguintes
+     |          dados:
+     |              - Posição Chegada
+     |              - Codigo Piloto
+     |              - Nome Piloto
+     |              - Tempo Total de Prova
+     |              - Qtde Voltas Completadas
+     |
+     |  velocidade_media(self)
+     |      Retorna a velocidade média de cada piloto.
+     |
+     |      Returns:
+     |          Dicionário com os seguintes dados:
+     |          {<cod_piloto_1>: <velocidade_piloto_1>,...
+     |           <cod_piloto_n>: <velocidade_piloto_n>}
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    ./corrida_gympass.py
+
