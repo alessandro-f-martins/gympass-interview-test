@@ -1,8 +1,18 @@
 # coding: utf-8
+""" Módulo testa_corrida_gympass:
+
+Módulo executável de testes para corrida_gympass para o teste prático do
+processo seletivo para a posição de Tech Lead Engineer na Gympass.
+
+"""
 
 from corrida_gympass import AvaliaCorrida
 from pprint import pprint
 
+# Para fins de testes, os pilotos foram colocados em um dicionário em
+# separado, pois os nomes constantes na massa de testes fornecida estão
+# inconsistentes, em especial "F.MASSA" e "F.MASS" (Vide referência nos
+# comentários do módulo `corrida_gympass`.
 pilotos_para_teste = {
     '002': 'Kimi Raikkonen',
     '011': 'Sebastian Vettel',
@@ -22,6 +32,7 @@ if __name__ == "__main__":
         print('%s: %s' % (pilotos_para_teste[piloto], piloto))
 
     resultado_prova = avalia_corrida.resultado_corrida()
+    # Inserindo uma coluna com os nomes dos pilotos para exibição
     resultado_prova.insert(1, 'Nome Piloto', resultado_prova['Codigo Piloto'].
                            apply(lambda x: pilotos_para_teste[x]))
 

@@ -2,7 +2,7 @@ Avaliador de Corridas
 =====================
 *Um teste de desenvolvimento para o processo seletivo de Tech Lead Engineer para a Gympass*
 
-***Autor:*** Alessandro Martins
+***Autor:*** Alessandro Martins  
 ***Data***: 17/07/2019
 
 Introdução
@@ -55,7 +55,7 @@ Detalhes da implementação
 ### Arquivos para a aplicação:
 
   - `corrida_gympass.py`: principal módulo, contém a classe `AvaliaCorrida`
-  – `__init__.py`: arquivo vazio, complementar ao módulo `corrida_gympass`
+    – `__init__.py`: arquivo vazio, complementar ao módulo `corrida_gympass`
   - `testa_corrida_gympass.py`: código para testes e demonstração de uso da aplicação
   - `corredores.data`: arquivo gerado pela cópia e colagem dos dados do site de especificações do teste
   - `corrida_gympass.hlp`: arquivo de ajuda para o módulo `corrida_gympass`, gerado por PyDoc a partir dos docstrings do módulo.
