@@ -165,9 +165,7 @@ class AvaliaCorrida:
             temp_df = self.df_corrida[self.df_corrida['Codigo Piloto']
                                       == no_piloto]
         else:
-            # Fazendo uma cópia de trabalho do DataFrame original, para não
-            # alterá-lo.
-            temp_df = self.df_corrida.copy(deep=True)
+            temp_df = self.df_corrida
 
         # Encontrando o registro com o menor valor para o tempo de volta
         _melhor_volta = temp_df[temp_df['Nº Volta'] == temp_df.loc[temp_df[
