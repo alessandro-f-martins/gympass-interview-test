@@ -63,7 +63,7 @@ CLASSES
      |      (`0min0s0`).
      |
      |      Returns:
-     |          Dicionário com os seguintes dados:
+     |          OrderedDict com os seguintes dados:
      |          {<cod_piloto_vencedor>: <tempo_piloto_vencedor>,
      |           <cod_piloto_2>: <velocidade_piloto_2>,...
      |           <cod_piloto_n>: <velocidade_piloto_n>}
@@ -95,7 +95,7 @@ CLASSES
      |      Retorna a velocidade média de cada piloto.
      |
      |      Returns:
-     |          Dicionário com os seguintes dados:
+     |          OrderedDict com os seguintes dados:
      |          {<cod_piloto_1>: <velocidade_piloto_1>,...
      |           <cod_piloto_n>: <velocidade_piloto_n>}
      |

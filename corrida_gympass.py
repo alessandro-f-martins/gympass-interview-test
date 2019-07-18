@@ -7,6 +7,7 @@ para a posição de Tech Lead Engineer na Gympass.
 
 """
 
+from collections import OrderedDict
 import re
 import pandas as pd
 
@@ -180,7 +181,7 @@ class AvaliaCorrida:
         """Retorna a velocidade média de cada piloto.
 
         Returns:
-            Dicionário com os seguintes dados:
+            OrderedDict com os seguintes dados:
             {<cod_piloto_1>: <velocidade_piloto_1>,...
              <cod_piloto_n>: <velocidade_piloto_n>}
 
@@ -193,7 +194,9 @@ class AvaliaCorrida:
             sort_values('Velocidade média da volta', ascending=False).\
             filter(items=['Codigo Piloto', 'Velocidade média da volta']).\
             reset_index().values
-        return {a[0]: a[1] for a in medias_vel}
+        # Usando OrderedDict para garantir a ordem por velocidades médias
+        # em Python versão < 3.7
+        return OrderedDict((a[0], a[1]) for a in medias_vel)
 
     def diferencas_pilotos(self):
         """Retorna as diferenças de tempo de chegada entre o vencedor e os
@@ -204,7 +207,7 @@ class AvaliaCorrida:
         (`0min0s0`).
 
         Returns:
-            Dicionário com os seguintes dados:
+            OrderedDict com os seguintes dados:
             {<cod_piloto_vencedor>: <tempo_piloto_vencedor>,
              <cod_piloto_2>: <velocidade_piloto_2>,...
              <cod_piloto_n>: <velocidade_piloto_n>}
@@ -218,6 +221,8 @@ class AvaliaCorrida:
             reset_index().values
         # Extraindo o tempo do vencedor
         tempo_ganhador = resultado_corrida_voltas[0][1]
-        # Retornando as diferenças.
-        return {a[0]: self._milis_em_tempo_str(a[1] - tempo_ganhador)
-                for a in resultado_corrida_voltas}
+        # Retornando as diferenças. Usando OrderedDict para garantir a ordem
+        # por diferença de tempo em Python versão < 3.7
+        return OrderedDict((a[0],
+                            self._milis_em_tempo_str(a[1] - tempo_ganhador))
+                           for a in resultado_corrida_voltas)
