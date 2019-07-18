@@ -135,7 +135,7 @@ class AvaliaCorrida:
         # Obtendo do DataFrame com a última volta completa de cada piloto
         volta_completa = self.df_corrida.groupby('Codigo Piloto').max().\
             sort_values('Nº Volta').filter(items=['Codigo Piloto', 'Nº Volta'])
-        # Renomeando o nome da coluna de acordo com os requerimentos
+        # Renomeando a coluna de acordo com os requerimentos
         volta_completa.rename(
             columns={'Nº Volta': 'Qtde Voltas Completadas'}, inplace=True)
         # Realizando o join dos resultados
