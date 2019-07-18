@@ -207,8 +207,8 @@ class AvaliaCorrida:
 
         Returns:
             Dicionário com os seguintes dados:
-            {<cod_piloto_vencedor>: <tempo_piloto_vencedor>,...
-             <cod_piloto_2>: <velocidade_piloto_2>}
+            {<cod_piloto_vencedor>: <tempo_piloto_vencedor>,
+             <cod_piloto_2>: <velocidade_piloto_2>,...
              <cod_piloto_n>: <velocidade_piloto_n>}
 
         """
