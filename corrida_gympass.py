@@ -108,7 +108,11 @@ class AvaliaCorrida:
                         nova_linha[primeira_linha.index('Tempo Volta')]))
                     dados_lista.append(nova_linha)
 
-        self.df_corrida = pd.DataFrame(columns=primeira_linha, data=dados_lista)
+        # Cria o DataFrame principal da classe e converte Nº de Volta para
+        # inteiro
+        self.df_corrida = pd.DataFrame(columns=primeira_linha,
+                                       data=dados_lista)
+        self.df_corrida['Nº Volta'] = self.df_corrida['Nº Volta'].apply(int)
 
     def resultado_corrida(self):
         """Retorna o resultado da corrida (prova) como um DataFrame pandas.
@@ -167,7 +171,7 @@ class AvaliaCorrida:
 
         if no_piloto:
             # Subconjunto do DataFrame relativo ao piloto.
-            if not no_piloto in list(self.df_corrida['Codigo Piloto']):
+            if no_piloto not in list(self.df_corrida['Codigo Piloto']):
                 raise KeyError('Código de piloto não encontrado.')
             temp_df = self.df_corrida[self.df_corrida['Codigo Piloto']
                                       == no_piloto]
