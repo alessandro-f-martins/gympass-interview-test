@@ -280,6 +280,9 @@ CLASSES
      |          Tupla com os seguintes dados:
      |          (<cod_piloto>, <nome_piloto>, <numero_volta>, <tempo_volta>)
      |
+     |      Raises:
+     |          KeyError: se o piloto de código 'no_piloto' não for encontrado
+     |
      |  resultado_corrida(self)
      |      Retorna o resultado da corrida (prova) como um DataFrame pandas.
      |
