@@ -45,7 +45,8 @@ class AvaliaCorrida:
 
     def __init__(self, nome_arq):
         """Vide descrição da classe."""
-        self.df_corrida = self.carrega_dados(nome_arq)
+        self.df_corrida = None
+        self.carrega_dados(nome_arq)
 
     def _tempo_em_milis(self, tempo):
         """Método privado. Converte tempo no formato MM:SS:mmm para
@@ -107,7 +108,7 @@ class AvaliaCorrida:
                         nova_linha[primeira_linha.index('Tempo Volta')]))
                     dados_lista.append(nova_linha)
 
-        return pd.DataFrame(columns=primeira_linha, data=dados_lista)
+        self.df_corrida = pd.DataFrame(columns=primeira_linha, data=dados_lista)
 
     def resultado_corrida(self):
         """Retorna o resultado da corrida (prova) como um DataFrame pandas.
@@ -163,6 +164,8 @@ class AvaliaCorrida:
 
         if no_piloto:
             # Subconjunto do DataFrame relativo ao piloto.
+            if not no_piloto in list(self.df_corrida['Codigo Piloto']):
+                raise KeyError('Código de piloto não encontrado.')
             temp_df = self.df_corrida[self.df_corrida['Codigo Piloto']
                                       == no_piloto]
         else:
