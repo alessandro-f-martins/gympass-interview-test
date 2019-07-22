@@ -112,7 +112,7 @@ class AvaliaCorrida:
         # inteiro
         self.df_corrida = pd.DataFrame(columns=primeira_linha,
                                        data=dados_lista)
-        self.df_corrida['Nº Volta'] = self.df_corrida['Nº Volta'].apply(int)
+        self.df_corrida['Nº Volta'] = self.df_corrida['Nº Volta'].astype(int)
 
     def resultado_corrida(self):
         """Retorna o resultado da corrida (prova) como um DataFrame pandas.
