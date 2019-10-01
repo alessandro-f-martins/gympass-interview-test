@@ -49,7 +49,7 @@ class AvaliaCorrida:
         self.carrega_dados(nome_arq)
 
     def _tempo_em_milis(self, tempo):
-        """Método privado. Converte tempo no formato MM:SS:mmm para
+        """Método privado. Converte tempo no formato MM:SS.mmm para
             milissegundos."""
         tempo_lista = re.split(':|\.', tempo)
         return int(tempo_lista[0])*60000 + int(tempo_lista[1])*1000 + \
@@ -57,10 +57,19 @@ class AvaliaCorrida:
 
     def _milis_em_tempo_str(self, tempo_milis):
         """Método privado. Converte tempo em milissegundos em uma string com
-           o formato 'MMminSSsmmm'."""
-        return str(tempo_milis // 60000) + 'min' + \
-            str((tempo_milis % 60000) // 1000) + 's' + \
-            str(tempo_milis % 1000)
+        o formato 'MM:SS.mmm'."""
+        mins = str(tempo_milis // 60000)
+        segs = (tempo_milis % 60000) // 1000
+        segs = '0' + str(segs) if segs < 10 else str(segs)
+        milis = tempo_milis % 1000
+        if milis < 10:
+            milis = '00' + str(milis)
+        elif milis >= 10 and milis < 100:
+            milis = '0' + str(milis)
+        else:
+            milis = str(milis)
+
+        return mins + ':' + segs + '.' + milis
 
     def _calcula_colocacao(self):
         """Método privado. Calcula a ordem de chegada e o total de tempo de
